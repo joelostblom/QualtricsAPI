@@ -202,7 +202,6 @@ class Responses(Credentials):
             elif key == 'timeZone':
                 assert isinstance(kwargs['timeZone'], str), 'Hey there, your "timeZone" parameter needs to be of type "str"!'
                 dynamic_payload.update({'timeZone': kwargs[(key)]})
-        print(dynamic_payload)
         download_request = self.send_request_v3(survey=survey, payload=dynamic_payload)
         with zipfile.ZipFile(io.BytesIO(download_request.content)) as survey_zip:
             for s in survey_zip.infolist():
